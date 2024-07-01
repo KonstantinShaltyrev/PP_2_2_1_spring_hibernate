@@ -8,6 +8,7 @@ public class User {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Column(name = "user_id")
    private Long id;
 
    @Column(name = "name")
@@ -19,9 +20,21 @@ public class User {
    @Column(name = "email")
    private String email;
 
+   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+   @PrimaryKeyJoinColumn
+   private Car car;
+
    public User() {}
-   
-   public User(String firstName, String lastName, String email) {
+
+   public User(String firstName, String lastName, String email, Car car) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.car = car;
+      this.car.setUser(this);
+   }
+
+      public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
@@ -57,5 +70,14 @@ public class User {
 
    public void setEmail(String email) {
       this.email = email;
+   }
+
+   public Car getCar() {
+      return car;
+   }
+
+   public void setCar(Car car) {
+      this.car = car;
+      this.car.setUser(this);
    }
 }
