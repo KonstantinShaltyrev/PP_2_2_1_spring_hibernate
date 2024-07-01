@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car {
     @Id
-    @Column(name = "car_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "model")
@@ -17,7 +17,6 @@ public class Car {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "car_id")
     private User user;
 
     public Car() {
