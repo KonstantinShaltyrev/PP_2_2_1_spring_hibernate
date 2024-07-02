@@ -35,7 +35,7 @@ public class MainApp {
          System.out.println();
       }
 
-      List<User> CarOwner = userService.findUserByCar("Audi", 1);
+      List<User> CarOwner = userService.findUser(new Car("Audi", 1));
       System.out.println("Model \"Audi\" series \"1\" owners:\n");
       for (User user : CarOwner) {
          System.out.println("Id = " + user.getId());
