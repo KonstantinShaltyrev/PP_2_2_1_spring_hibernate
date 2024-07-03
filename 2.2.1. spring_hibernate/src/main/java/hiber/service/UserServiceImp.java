@@ -29,7 +29,7 @@ public class UserServiceImp implements UserService {
 
    @Transactional
    @Override
-   public List<User> findUser (Car car) {
+   public List<User> findUser(Car car) {
       return userDao.findUser(car);
    }
 

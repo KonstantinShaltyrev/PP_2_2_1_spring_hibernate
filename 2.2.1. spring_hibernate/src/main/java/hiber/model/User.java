@@ -1,7 +1,5 @@
 package hiber.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 
 @Entity
@@ -25,7 +23,8 @@ public class User {
    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
    private Car car;
 
-   public User() {}
+   public User() {
+   }
 
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
@@ -33,7 +32,6 @@ public class User {
       this.email = email;
    }
 
-   @Autowired
    public User(String firstName, String lastName, String email, Car car) {
       this(firstName, lastName, email);
       this.setCar(car);
